@@ -1,0 +1,41 @@
+// Pin Definitions
+const int irSensorPin = 2;    // IR Sensor pin
+const int motorPin = 3;       // Motor pin
+
+// Variables
+int objectDetected = 0;       // Flag to indicate object detection
+
+void setup() {
+  // Initialize serial communication
+  Serial.begin(9600);
+
+  // Configure pin modes
+  pinMode(irSensorPin, INPUT);
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop() {
+  // Read the IR sensor value
+  objectDetected = digitalRead(irSensorPin);
+
+  // Check if an object is detected
+  if (objectDetected == HIGH) {
+    // Object detected, open the dustbin lid
+    openDustbinLid();
+  } else {
+    // No object detected, close the dustbin lid
+    closeDustbinLid();
+  }
+}
+
+// Function to open the dustbin lid
+void openDustbinLid() {
+  digitalWrite(motorPin, HIGH);   // Rotate the motor to open the lid
+  Serial.println("Dustbin Lid Open");
+}
+
+// Function to close the dustbin lid
+void closeDustbinLid() {
+  digitalWrite(motorPin, LOW);    // Stop the motor to close the lid
+  Serial.println("Dustbin Lid Closed");
+}
