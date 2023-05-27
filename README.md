@@ -7,7 +7,7 @@ Arduino Uno
 IR sensor
 servo Motor
 Jumper wires(for connection )
-Breadboard
+Breadboard.
 
 Code Explanation:
 Dustbin or enclosure
